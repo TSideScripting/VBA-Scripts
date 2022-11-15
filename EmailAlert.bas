@@ -117,7 +117,7 @@ Public Sub EmailAlert()
                 .Importance = 2
                 .Send ' You can use .Display
             End With
-            McrS.Range("C2").Offset(i).Value = True
+            McrS.Range("D2").Offset(i).Value = True
             EmailZero(i) = True
         End If
     Next i
