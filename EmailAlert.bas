@@ -124,5 +124,3 @@ Public Sub EmailAlert()
     Application.EnableEvents = True
     Application.ScreenUpdating = True
 End Sub
-
-
