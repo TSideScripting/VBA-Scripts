@@ -6,7 +6,7 @@ Public Sub EmailAlert()
     Dim mApp As Object
     Dim mMail As Object
     Dim SendToMail As String
-    Dim CCMail as String
+    Dim CCMail As String
     Dim MailSubject As String
     Dim mMailBody As String
     Dim Eqpt(0 To 10) As Long
@@ -57,12 +57,12 @@ Public Sub EmailAlert()
             If i <> 4 Then
                 SendToMail = "ithelpdeskteam@uk.aswatson.com; tsinfrastructure@uk.aswatson.com"
                 CCMail = ""
-            Elseif i = 4 Then
+            ElseIf i = 4 Then
                 SendToMail = "ithelpdeskteam@uk.aswatson.com; Andre.Veredas@uk.aswatson.com"
                 CCMail = "Mark.Garrett@uk.aswatson.com"
             End If
             MailSubject = "LOW STOCK ALERT - " & EqptName(i)
-            mMailBody = EqptName(i) & "s are running low on stock! Only " & Eqpt(i) & " units left!"
+            mMailBody = EqptName(i) & "s are running low on stock. There are currently " & Eqpt(i) & " units left."
             Set mApp = CreateObject("Outlook.Application")
             Set mMail = mApp.CreateItem(0)
             With mMail
@@ -70,16 +70,16 @@ Public Sub EmailAlert()
                 .CC = CCMail
                 .Subject = MailSubject
                 .Body = mMailBody
-                .Importance = 2
+                .Importance = 1
                 .Send ' You can use .Display
             End With
             McrS.Range("B2").Offset(i).Value = True
             EmailTwenty(i) = True
-        Elseif StatTen(i) = True And EmailTen(i) = False Then
+        ElseIf StatTen(i) = True And EmailTen(i) = False Then
             If i <> 4 Then
                 SendToMail = "ithelpdeskteam@uk.aswatson.com; tsinfrastructure@uk.aswatson.com"
                 CCMail = ""
-            Elseif i = 4 Then
+            ElseIf i = 4 Then
                 SendToMail = "ithelpdeskteam@uk.aswatson.com; Andre.Veredas@uk.aswatson.com"
                 CCMail = "Mark.Garrett@uk.aswatson.com"
             End If
@@ -101,7 +101,7 @@ Public Sub EmailAlert()
             If i <> 4 Then
                 SendToMail = "ithelpdeskteam@uk.aswatson.com; tsinfrastructure@uk.aswatson.com"
                 CCMail = ""
-            Elseif i = 4 Then
+            ElseIf i = 4 Then
                 SendToMail = "ithelpdeskteam@uk.aswatson.com; Andre.Veredas@uk.aswatson.com"
                 CCMail = "Mark.Garrett@uk.aswatson.com"
             End If
