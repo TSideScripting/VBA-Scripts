@@ -9,14 +9,14 @@ Public Sub EmailAlert()
     Dim CCMail As String
     Dim MailSubject As String
     Dim mMailBody As String
-    Dim Eqpt(0 To 10) As Long
-    Dim EqptName(0 To 10) As String
-    Dim StatTwenty(0 To 10) As String
-    Dim StatTen(0 To 10) As String
-    Dim StatZero(0 To 10) As String
-    Dim EmailTwenty(0 To 10) As String
-    Dim EmailTen(0 To 10) As String
-    Dim EmailZero(0 To 10) As String
+    Dim Eqpt(0 To 11) As Long
+    Dim EqptName(0 To 11) As String
+    Dim StatTwenty(0 To 11) As String
+    Dim StatTen(0 To 11) As String
+    Dim StatZero(0 To 11) As String
+    Dim EmailTwenty(0 To 11) As String
+    Dim EmailTen(0 To 11) As String
+    Dim EmailZero(0 To 11) As String
     Dim i As Long
 
     Set Trkr = ThisWorkbook.Worksheets("Tracker")
@@ -25,7 +25,7 @@ Public Sub EmailAlert()
     Application.ScreenUpdating = False
     Application.EnableEvents = False
 
-    For i = 0 To 10
+    For i = 0 To 11
 
         Eqpt(i) = Trkr.Range("C1").Offset(0, i).Value
         EqptName(i) = Trkr.Range("C2").Offset(0, i).Value
@@ -54,10 +54,10 @@ Public Sub EmailAlert()
         EmailZero(i) = McrS.Range("D2").Offset(i).Value
 
         If StatTwenty(i) = True And EmailTwenty(i) = False Then
-            If i <> 4 Then
+            If EqptName(i) <> "Fingerprint Scanner" Then
                 SendToMail = "ithelpdeskteam@uk.aswatson.com; tsinfrastructure@uk.aswatson.com"
                 CCMail = ""
-            ElseIf i = 4 Then
+            ElseIf EqptName(i) = "Fingerprint Scanner" Then
                 SendToMail = "ithelpdeskteam@uk.aswatson.com; Andre.Veredas@uk.aswatson.com"
                 CCMail = "Mark.Garrett@uk.aswatson.com"
             End If
@@ -76,10 +76,10 @@ Public Sub EmailAlert()
             McrS.Range("B2").Offset(i).Value = True
             EmailTwenty(i) = True
         ElseIf StatTen(i) = True And EmailTen(i) = False Then
-            If i <> 4 Then
+            If EqptName(i) <> "Fingerprint Scanner" Then
                 SendToMail = "ithelpdeskteam@uk.aswatson.com; tsinfrastructure@uk.aswatson.com"
                 CCMail = ""
-            ElseIf i = 4 Then
+            ElseIf EqptName(i) = "Fingerprint Scanner" Then
                 SendToMail = "ithelpdeskteam@uk.aswatson.com; Andre.Veredas@uk.aswatson.com"
                 CCMail = "Mark.Garrett@uk.aswatson.com"
             End If
@@ -98,10 +98,10 @@ Public Sub EmailAlert()
             McrS.Range("C2").Offset(i).Value = True
             EmailTen(i) = True
         ElseIf StatZero(i) = True And EmailZero(i) = False Then
-            If i <> 4 Then
+            If EqptName(i) <> "Fingerprint Scanner" Then
                 SendToMail = "ithelpdeskteam@uk.aswatson.com; tsinfrastructure@uk.aswatson.com"
                 CCMail = ""
-            ElseIf i = 4 Then
+            ElseIf EqptName(i) = "Fingerprint Scanner" Then
                 SendToMail = "ithelpdeskteam@uk.aswatson.com; Andre.Veredas@uk.aswatson.com"
                 CCMail = "Mark.Garrett@uk.aswatson.com"
             End If
@@ -124,3 +124,6 @@ Public Sub EmailAlert()
     Application.EnableEvents = True
     Application.ScreenUpdating = True
 End Sub
+
+
+Day-Walker18
